@@ -9,7 +9,7 @@ scored only by a model that never saw its speaker. Hyper-parameters (C, SSL laye
 are chosen inside each outer fold (nested CV), so reported numbers are not tuned on
 the data they are measured on.
 """
-import argparse, json, os, time, warnings
+import argparse, hashlib, json, os, pickle, sys, time, warnings
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
@@ -27,6 +27,31 @@ C_GRID = [0.001, 0.01, 0.1, 1.0]
 
 def log(*a):
     print(time.strftime("%H:%M:%S"), *a, flush=True)
+
+
+# --------------------------------------------------------------------------- resumable steps
+# With --budget N the script stops after about N seconds and a rerun continues where it
+# stopped: every outer fold / cross-dataset run is cached in --cache. Results are identical.
+CACHE_DIR, DEADLINE = None, None
+
+
+class OutOfTime(Exception):
+    pass
+
+
+def memo(key, fn):
+    if CACHE_DIR is None:
+        return fn()
+    path = os.path.join(CACHE_DIR, hashlib.md5(key.encode()).hexdigest() + ".pkl")
+    if os.path.exists(path):
+        with open(path, "rb") as f:
+            return pickle.load(f)
+    if DEADLINE and time.time() > DEADLINE:
+        raise OutOfTime(key)
+    r = fn()
+    with open(path, "wb") as f:
+        pickle.dump(r, f)
+    return r
 
 
 # --------------------------------------------------------------------------- metrics
@@ -95,7 +120,7 @@ def fit_predict(Xtr, ytr, gtr, Xte, layers=False):
     return make_model(C).fit(Xtr[L], ytr).predict_proba(Xte[L])[:, 1], dict(C=C, layer=int(L))
 
 
-def oof(X, y, g, mask_train=None, layers=False, random_split=False):
+def oof(X, y, g, mask_train=None, layers=False, random_split=False, key=None):
     """Out-of-fold scores with speaker-disjoint outer folds. mask_train limits what may be trained on."""
     n = len(y)
     s = np.full(n, np.nan)
@@ -103,12 +128,13 @@ def oof(X, y, g, mask_train=None, layers=False, random_split=False):
           else StratifiedGroupKFold(OUTER, shuffle=True, random_state=SEED))
     params = []
     Xi = X[0] if layers else X
-    for tr, te in cv.split(Xi, y, g):
+    for i, (tr, te) in enumerate(cv.split(Xi, y, g)):
         if mask_train is not None:
             tr = tr[mask_train[tr]]
         Xtr = X[:, tr] if layers else X[tr]
         Xte = X[:, te] if layers else X[te]
-        s[te], p = fit_predict(Xtr, y[tr], g[tr], Xte, layers)
+        fit = lambda: fit_predict(Xtr, y[tr], g[tr], Xte, layers)
+        s[te], p = memo(f"{key}|fold{i}", fit) if key else fit()
         params.append(p)
     return s, params
 
@@ -140,7 +166,23 @@ def main():
     ap.add_argument("--out", default="results")
     ap.add_argument("--ssl-models", nargs="*", default=[])
     ap.add_argument("--quick", action="store_true", help="skip the slow per-system leave-one-out runs")
+    ap.add_argument("--cache", help="folder for resumable step results (see --budget)")
+    ap.add_argument("--budget", type=float, help="stop after about this many seconds; rerun to continue")
     a = ap.parse_args()
+    global CACHE_DIR, DEADLINE
+    if a.cache:
+        CACHE_DIR = a.cache
+        os.makedirs(CACHE_DIR, exist_ok=True)
+    if a.budget:
+        DEADLINE = time.time() + a.budget
+    try:
+        experiments(a)
+    except OutOfTime as e:
+        log(f"time budget reached before step {e}; rerun the same command to continue")
+        sys.exit(3)
+
+
+def experiments(a):
     os.makedirs(a.out, exist_ok=True)
 
     df = pd.read_csv(os.path.join(a.data, "train.csv"))
@@ -155,13 +197,15 @@ def main():
     for md in a.ssl_models:
         tag = os.path.basename(md.rstrip("/"))
         log(f"SSL features: {tag}")
-        ssl[tag] = F.extract_ssl(df, a.data, md, tag)
+        ssl[tag] = F.extract_ssl(df, a.data, md, tag, deadline=DEADLINE)
+        if ssl[tag] is None:
+            raise OutOfTime(f"ssl {tag}")
 
     summary, per_system, notes = [], [], {}
 
     def run(name, X, layers=False, **kw):
         log(f"run {name}")
-        s, params = oof(X, y, g, layers=layers, **kw)
+        s, params = oof(X, y, g, layers=layers, key=name, **kw)
         row, ps = breakdown(df, y, s, name)
         row["CI95_all"] = bootstrap_ci(y, s, g)
         row["params"] = params
@@ -189,9 +233,12 @@ def main():
         run(f"Ablation: MFCC, trained without {'+'.join(real_only)}", feats["mfcc"],
             mask_train=(~df.source.isin(real_only)).values)
     cvs = StratifiedGroupKFold(OUTER, shuffle=True, random_state=SEED)
-    pred = np.empty(len(df), dtype=object)
-    for tr, te in cvs.split(feats["mfcc"], df.source, g):
-        pred[te] = make_model(1.0).fit(feats["mfcc"][tr], df.source.values[tr]).predict(feats["mfcc"][te])
+    def source_clf():
+        pred = np.empty(len(df), dtype=object)
+        for tr, te in cvs.split(feats["mfcc"], df.source, g):
+            pred[te] = make_model(1.0).fit(feats["mfcc"][tr], df.source.values[tr]).predict(feats["mfcc"][te])
+        return pred
+    pred = memo("source classifier", source_clf)
     notes["source_classifier_accuracy_mfcc"] = float(accuracy_score(df.source, pred))
     notes["source_majority_rate"] = float(df.source.value_counts(normalize=True).max())
 
@@ -209,7 +256,8 @@ def main():
                 te = (df.source == te_src).values
                 Xtr = X[:, tr] if layers else X[tr]
                 Xte = X[:, te] if layers else X[te]
-                s, p = fit_predict(Xtr, y[tr], g[tr], Xte, layers)
+                s, p = memo(f"cross|{fname}|{tr_src}|{te_src}",
+                            lambda: fit_predict(Xtr, y[tr], g[tr], Xte, layers))
                 within = next(r[f"EER_{te_src}"] for r in summary if r["model"] == names[fname])
                 cross.append(dict(features=fname, train=tr_src, test=te_src,
                                   EER_cross=eer(y[te], s), EER_within_test_source=within, params=p))
@@ -219,11 +267,14 @@ def main():
     loso = []
     if not a.quick:
         for fname, X in allfeats.items():
-            layers = X.ndim == 3
+            layers = False
+            if X.ndim == 3:  # to keep this affordable, use the layer picked most often in the main run
+                picked = [p["layer"] for r in summary if r["model"] == names[fname] for p in r["params"]]
+                X = X[max(set(picked), key=picked.count)]
             for (src, sysname), _ in df[df.label == "spoof"].groupby(["source", "system"]):
                 keep = ~((df.source == src) & (df.system == sysname)).values  # never train on this system
                 evalm = ((df.source == src) & ((df.label == "bonafide") | (df.system == sysname))).values
-                s, _ = oof(X, y, g, mask_train=keep, layers=layers)
+                s, _ = oof(X, y, g, mask_train=keep, layers=layers, key=f"loso|{fname}|{src}|{sysname}")
                 loso.append(dict(features=fname, source=src, system=sysname,
                                  n_spoof=int(((df.source == src) & (df.system == sysname)).sum()),
                                  EER_unseen=eer(y[evalm], s[evalm])))

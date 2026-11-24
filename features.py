@@ -78,8 +78,10 @@ def extract(df, data_dir, name, trim=False):
     return X
 
 
-def extract_ssl(df, data_dir, model_dir, tag):
-    """Mean-pooled hidden states of a frozen wav2vec2/WavLM model: array (n_layers+1, n_clips, dim)."""
+def extract_ssl(df, data_dir, model_dir, tag, deadline=None):
+    """Mean-pooled hidden states of a frozen wav2vec2/WavLM model: array (n_layers+1, n_clips, dim).
+    With a deadline (time.time() value) it saves progress and returns None when time is up;
+    the next call continues from the saved clips."""
     cache = os.path.join(data_dir, "features", f"ssl_{tag}.npy")
     if os.path.exists(cache):
         X = np.load(cache)
@@ -90,15 +92,27 @@ def extract_ssl(df, data_dir, model_dir, tag):
     torch.set_num_threads(max(1, os.cpu_count() or 1))
     fe = AutoFeatureExtractor.from_pretrained(model_dir)
     model = AutoModel.from_pretrained(model_dir).eval()
-    out = []
+    import time
+    partial = os.path.join(data_dir, "features", f"ssl_{tag}_partial.npy")
+    os.makedirs(os.path.dirname(partial), exist_ok=True)
+    out = list(np.load(partial)) if os.path.exists(partial) else []
+    if out:
+        print(f"  ssl {tag}: resuming at {len(out)}/{len(df)}", flush=True)
     with torch.no_grad():
         for i, f in enumerate(df["file"]):
+            if i < len(out):
+                continue
+            if deadline and time.time() > deadline:
+                np.save(partial, np.stack(out).astype(np.float32))
+                print(f"  ssl {tag}: paused at {len(out)}/{len(df)}", flush=True)
+                return None
             y = load(os.path.join(data_dir, f))
             inp = fe(y, sampling_rate=SR, return_tensors="pt")
             hs = model(**inp, output_hidden_states=True).hidden_states
             out.append(torch.stack([h[0].mean(0) for h in hs]).numpy())
             if (i + 1) % 100 == 0:
                 print(f"  ssl {tag}: {i + 1}/{len(df)}", flush=True)
+                np.save(partial, np.stack(out).astype(np.float32))
     X = np.stack(out, axis=1).astype(np.float32)
     os.makedirs(os.path.dirname(cache), exist_ok=True)
     np.save(cache, X)
