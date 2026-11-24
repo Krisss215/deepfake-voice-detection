@@ -76,6 +76,18 @@ def to_clip(y, sr, rng):
     return y.astype(np.float32)
 
 
+def with_retry(fn, tries=4, wait=5):
+    """Network reads sometimes drop; try again a few times before giving up."""
+    for k in range(tries):
+        try:
+            return fn()
+        except Exception as e:
+            if k == tries - 1:
+                raise
+            log(f"  read failed ({e}); retrying in {wait * (k + 1)} s")
+            time.sleep(wait * (k + 1))
+
+
 def decode(data_bytes):
     y, sr = sf.read(io.BytesIO(data_bytes), dtype="float32", always_2d=False)
     return y, sr
@@ -248,7 +260,7 @@ def build_vctk(out, src, speakers, n_bona=300, max_per_spk=4):
         return log("VCTK: already done, skipping")
     if is_url(src):
         from remotezip import RemoteZip
-        zf = RemoteZip(src)
+        zf = with_retry(lambda: RemoteZip(src))
     else:
         zf = zipfile.ZipFile(src)
     names = [n for n in zf.namelist() if re.search(r"wav48_silence_trimmed/p\d+/p\d+_\d+_mic1\.flac$", n)]
@@ -265,11 +277,17 @@ def build_vctk(out, src, speakers, n_bona=300, max_per_spk=4):
         for n in rng.sample(by_spk[s], len(by_spk[s])):
             if got >= quota[s]:
                 break
-            y, sr = decode(zf.read(n))
+            try:
+                y, sr = decode(with_retry(lambda: zf.read(n)))
+            except Exception as e:
+                log(f"VCTK: skipping {n}: {e}")
+                continue
             if len(y) / sr < MIN_DUR:
                 continue
             w.add(y, sr, "bonafide", s, "-", n)
             got += 1
+            if len(w.rows) % 25 == 0:
+                log(f"VCTK: {len(w.rows)}/{n_bona} clips")
     w.done(out)
 
 
@@ -296,6 +314,8 @@ def build_mailabs(out, sources, n_bona=320, max_per_book=10):
                         continue
                     w.add(y, sr, "bonafide", speaker, "-", m.name)
                     per_book[(speaker, book)] += 1
+                    if len(w.rows) % 40 == 0:
+                        log(f"M-AILABS: {len(w.rows)}/{n_bona} clips")
             break
         except Exception as e:  # try the next mirror
             last_err = e
