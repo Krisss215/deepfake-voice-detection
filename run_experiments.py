@@ -184,8 +184,10 @@ def main():
     run("Check: silence only", F.extract(df, a.data, "silence"))
     run("Ablation: MFCC after silence trim", feats_trim["mfcc"])
     run("Ablation: LFCC after silence trim", feats_trim["lfcc"])
-    no_mailabs = (df.source != "M-AILABS").values
-    run("Ablation: MFCC, trained without M-AILABS", feats["mfcc"], mask_train=no_mailabs)
+    real_only = [src for src in df.source.unique() if df.loc[df.source == src, "label"].nunique() == 1]
+    if real_only:  # M-AILABS, or LibriSpeech when it stands in for M-AILABS
+        run(f"Ablation: MFCC, trained without {'+'.join(real_only)}", feats["mfcc"],
+            mask_train=(~df.source.isin(real_only)).values)
     cvs = StratifiedGroupKFold(OUTER, shuffle=True, random_state=SEED)
     pred = np.empty(len(df), dtype=object)
     for tr, te in cvs.split(feats["mfcc"], df.source, g):

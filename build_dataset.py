@@ -7,6 +7,9 @@ from the three public corpora named in the project brief, and writes train.csv.
     CodecFake  (VCTK re-synthesised by neural codecs) : 300 spoof
     VCTK 0.92  (the real recordings CodecFake was made from) : 300 bonafide
     M-AILABS   (en_US audiobooks, real only) : 320 bonafide
+    -> if the M-AILABS servers are unreachable (they were down in Nov 2026), the same
+       role is filled by LibriSpeech dev-clean (OpenSLR 12): also real LibriVox
+       audiobooks, 320 bonafide, source "LibriSpeech". Use --only librispeech.
 
 Only the clips that are kept are stored. Archives are read as streams or with
 HTTP range requests, so the full corpora (100+ GB) are never saved to disk.
@@ -37,6 +40,10 @@ CODECFAKE_REPO = "datasets/rogertseng/CodecFake"
 VCTK_ZIP = "https://datashare.ed.ac.uk/bitstream/handle/10283/3443/VCTK-Corpus-0.92.zip"
 MAILABS_TGZ = ["https://data.solak.de/data/Training/stt_tts/en_US.tgz",
                "http://www.caito.de/data/Training/stt_tts/en_US.tgz"]
+# LibriSpeech dev-clean: 40 speakers, ~340 MB, 16 kHz FLAC, CC BY 4.0. Official site + mirrors.
+LIBRI_TGZ = ["https://www.openslr.org/resources/12/dev-clean.tar.gz",
+             "https://us.openslr.org/resources/12/dev-clean.tar.gz",
+             "https://openslr.elda.org/resources/12/dev-clean.tar.gz"]
 
 
 # --------------------------------------------------------------------------- helpers
@@ -325,6 +332,44 @@ def build_mailabs(out, sources, n_bona=320, max_per_book=10):
     w.done(out)
 
 
+def build_librispeech(out, sources, n_bona=320, max_per_spk=8, max_per_chapter=4):
+    """Real audiobook speech in place of M-AILABS (same origin: LibriVox recordings).
+    dev-clean has 40 speakers; at most 8 clips per speaker and 4 per chapter, so the
+    320 clips cover all speakers and many chapters instead of a few long readings."""
+    if finished(out, "LibriSpeech"):
+        return log("LibriSpeech: already done, skipping")
+    last_err = None
+    for src in sources:
+        w, per_spk, per_ch = Writer(out, "LibriSpeech"), Counter(), Counter()
+        try:
+            log(f"LibriSpeech: streaming {src}")
+            with tarfile.open(fileobj=open_stream(src), mode="r|*") as tf:
+                for m in tf:
+                    if len(w.rows) >= n_bona:
+                        break
+                    if not (m.isfile() and m.name.endswith(".flac")):
+                        continue
+                    parts = m.name.split("/")          # LibriSpeech/dev-clean/<spk>/<chapter>/<utt>.flac
+                    speaker, chapter = parts[-3], parts[-2]
+                    if per_spk[speaker] >= max_per_spk or per_ch[(speaker, chapter)] >= max_per_chapter:
+                        continue
+                    y, sr = decode(tf.extractfile(m).read())
+                    if len(y) / sr < MIN_DUR:
+                        continue
+                    w.add(y, sr, "bonafide", speaker, "-", m.name)
+                    per_spk[speaker] += 1
+                    per_ch[(speaker, chapter)] += 1
+                    if len(w.rows) % 40 == 0:
+                        log(f"LibriSpeech: {len(w.rows)}/{n_bona} clips")
+            if w.rows:
+                w.done(out)
+                return
+        except Exception as e:  # try the next mirror from scratch
+            last_err = e
+            log(f"LibriSpeech: {src} failed: {e}")
+    raise RuntimeError(f"LibriSpeech: no source worked ({last_err})")
+
+
 # --------------------------------------------------------------------------- main
 def merge(out):
     parts = [pd.read_csv(os.path.join(out, f)) for f in sorted(os.listdir(out)) if f.startswith("part_")]
@@ -337,7 +382,7 @@ def merge(out):
     df.to_csv(os.path.join(out, "train.csv"), index=False)
     print("\n" + pd.crosstab(df["source"], df["label"], margins=True).to_string())
     json.dump(dict(built=time.strftime("%Y-%m-%d %H:%M"), n=len(df), sources=dict(
-        ASVspoof5=ASV_DEV_TARS[0], CodecFake=CODECFAKE_REPO, VCTK=VCTK_ZIP, MAILABS=MAILABS_TGZ[0])),
+        ASVspoof5=ASV_DEV_TARS[0], CodecFake=CODECFAKE_REPO, VCTK=VCTK_ZIP, MAILABS=MAILABS_TGZ[0], LibriSpeech=LIBRI_TGZ[0])),
         open(os.path.join(out, "build_info.json"), "w"), indent=1)
     log(f"train.csv: {len(df)} rows -> {os.path.join(out, 'train.csv')}")
 
@@ -345,12 +390,14 @@ def merge(out):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", default="data")
-    ap.add_argument("--only", nargs="*", choices=["asv", "codecfake", "vctk", "mailabs"], help="build only these")
+    ap.add_argument("--only", nargs="*", choices=["asv", "codecfake", "vctk", "mailabs", "librispeech"],
+                    help="build only these (default: all except librispeech)")
     ap.add_argument("--asv-protocols", default=ASV_PROTOCOLS)
     ap.add_argument("--asv-tars", nargs="*", default=ASV_DEV_TARS)
     ap.add_argument("--codecfake-parquets", nargs="*", help="local CodecFake .parquet files instead of Hugging Face")
     ap.add_argument("--vctk", default=VCTK_ZIP)
     ap.add_argument("--mailabs", nargs="*", default=MAILABS_TGZ)
+    ap.add_argument("--librispeech", nargs="*", default=LIBRI_TGZ)
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     todo = set(a.only or ["asv", "codecfake", "vctk", "mailabs"])
@@ -366,6 +413,8 @@ def main():
         build_vctk(a.out, a.vctk, spk)
     if "mailabs" in todo:
         build_mailabs(a.out, a.mailabs)
+    if "librispeech" in todo:
+        build_librispeech(a.out, a.librispeech)
     merge(a.out)
 
 
