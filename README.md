@@ -1,47 +1,56 @@
-# פרויקט זיהוי זיופים קוליים – קוד
+# Deepfake Voice Detection
 
-## מה יש בתיקייה
+Course project for *Advanced Topics in Machine Learning* (HIT): can a classifier detect synthetic speech, including speech made by a spoofing method it never saw during training?
 
-| קובץ | מה הוא עושה |
+## Files
+
+| File | What it does |
 | --- | --- |
-| `build_dataset.py` | בונה את מאגר האימון (1,520 קטעים של 4 שניות, 16kHz מונו) מהמאגרים הציבוריים, וכותב `data/train.csv` |
-| `download_models.py` | מוריד את שני המודלים המאומנים מראש לגישה B (wav2vec 2.0, WavLM) |
-| `stage1_data_analysis.ipynb` | שלב 1: סקירת הנתונים, Baseline ובדיקות קיצורי דרך |
-| `features.py` | חילוץ פיצ'רים: MFCC, LFCC, log-spectrogram, ייצוגי SSL |
-| `run_experiments.py` | כל הניסויים של תכנית שלב 2, כותב תוצאות ל-`results/` |
+| `build_dataset.py` | Builds the training set (1,520 clips, 4 s, 16 kHz mono) from the public corpora and writes `data/train.csv` |
+| `download_models.py` | Downloads the two pretrained speech models used by approach B (wav2vec 2.0, WavLM) |
+| `stage1_data_analysis.ipynb` | Stage 1: data analysis, baseline and shortcut checks |
+| `features.py` | Feature extraction: MFCC, LFCC, log-spectrogram, self-supervised (SSL) embeddings |
+| `run_experiments.py` | Every experiment in the stage 2 plan; writes results to `results/` |
 
-## שלב 1: לבנות את הנתונים (במחשב שלך, ב-Terminal)
+## Step 1: build the data
 
 ```bash
-cd ~/Documents/uni/HIT/deepfake-project
 pip install numpy pandas soundfile soxr requests pyarrow huggingface_hub remotezip
 python3 build_dataset.py --out data
 python3 download_models.py
 ```
 
-הסקריפט לא שומר את המאגרים המלאים (יותר מ-100GB), אלא רק את הקטעים שנבחרו (כ-200MB בסוף).
-הוא קורא את הארכיונים ברצף ועוצר כשיש מספיק קטעים, ולכן התעבורה בפועל היא בערך 3–10GB, והריצה יכולה לקחת שעה–שעתיים.
+The script does not save the full corpora (over 100 GB), only the selected clips (about 200 MB in the end). It reads the archives as streams and stops once it has enough clips, so the actual transfer is roughly 3–10 GB and a run can take one to two hours.
 
-| מקור | נלקח | מאיפה |
+| Source | Taken | From |
 | --- | --- | --- |
-| ASVspoof 5, dev | 300 אמיתי + 300 מזויף (A09–A16, חלוקה שווה) | Zenodo, רשומה 14498691 |
-| CodecFake | 300 מזויף, מ-10 קודקים | Hugging Face: rogertseng/CodecFake |
-| VCTK 0.92 | 300 אמיתי – ההקלטות המקוריות ש-CodecFake נוצר מהן | Edinburgh DataShare |
-| M-AILABS, en_US | 320 אמיתי, עד 10 קטעים לספר | data.solak.de |
+| ASVspoof 5, dev set | 300 bonafide + 300 spoof (A09–A16, split evenly) | Zenodo, record 14498691 |
+| CodecFake | 300 spoof, from 10 codecs | Hugging Face: rogertseng/CodecFake |
+| VCTK 0.92 | 300 bonafide – the original recordings CodecFake was made from | Edinburgh DataShare |
+| M-AILABS, en_US | 320 bonafide, at most 10 clips per book | data.solak.de |
 
-אם מקור אחד נכשל, אפשר להריץ רק אותו שוב, למשל: `python3 build_dataset.py --out data --only mailabs`.
-אם הורדת ארכיון בדפדפן, אפשר לתת נתיב מקומי במקום כתובת (`--help` מראה איך).
+If one source fails, rerun only that one, e.g. `python3 build_dataset.py --out data --only mailabs`.
+If you downloaded an archive in the browser, pass its local path instead of the URL (see `--help`).
 
-## שלב 2: להריץ את הניסויים
+## Step 2: run the experiments
 
 ```bash
 pip install librosa scikit-learn torch transformers
 python3 run_experiments.py --data data --ssl-models data/models/wav2vec2-base data/models/wavlm-base-plus
 ```
 
-## החלטות בבניית הנתונים
+All scores are out-of-fold with speaker-disjoint folds, and hyperparameters (regularization strength, SSL layer) are chosen by nested cross-validation.
 
-- **אורך:** קטעים קצרים מ-3 שניות לא נלקחים, וקטעים ארוכים נחתכים בחלון אקראי של 4 שניות. אחרת, ריפוד ארוך באפסים היה רמז קל לזיהוי המאגר.
-- **CodecFake ו-VCTK:** בתיאור הפרויקט ל-CodecFake יש 300 אמיתיים ו-300 מזויפים. האמיתיים הם הקלטות VCTK של אותם דוברים, ולכן ב-`train.csv` שניהם מסומנים `source=CodecFake`, ועמודת `corpus` שומרת את המקור האמיתי.
-- **דובר:** עמודת `speaker` כוללת את שם המאגר (`ASVspoof5:D_0123`), כדי שדוברים ממאגרים שונים לא יתערבבו בפיצול.
-- **מקורות:** ASVspoof 5, CodecFake ו-VCTK תחת CC BY 4.0. M-AILABS תחת הרישיון החופשי של M-AILABS.
+## Data decisions
+
+- **Length:** source clips shorter than 3 s are skipped, and longer ones are cut to a random 4 s window. Otherwise long zero-padding would be an easy cue for identifying the corpus.
+- **CodecFake and VCTK:** the project brief lists 300 real and 300 fake CodecFake clips. The real ones are VCTK recordings of the same speakers, so in `train.csv` both are marked `source=CodecFake`, and the `corpus` column keeps the true origin.
+- **Speaker:** the `speaker` column includes the corpus name (`ASVspoof5:D_0123`), so speakers from different corpora are never merged in the split.
+- **Audio is not included in this repository.** The data is used for the course only; run `build_dataset.py` to recreate it.
+
+## Sources
+
+- ASVspoof 5 – Wang et al., 2024 (CC BY 4.0)
+- CodecFake – Wu, Tseng & Lee, Interspeech 2024 (CC BY 4.0)
+- VCTK Corpus 0.92 – University of Edinburgh (CC BY 4.0)
+- M-AILABS Speech Dataset (M-AILABS license)
