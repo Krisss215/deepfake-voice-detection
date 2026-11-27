@@ -1,0 +1,199 @@
+model,source,system,n_spoof,EER
+Baseline: MFCC+LR,ASVspoof5,A09,37,0.15941441441441442
+Baseline: MFCC+LR,ASVspoof5,A10,37,0.10572072072072072
+Baseline: MFCC+LR,ASVspoof5,A11,38,0.05131578947368424
+Baseline: MFCC+LR,ASVspoof5,A12,38,0.3857017543859649
+Baseline: MFCC+LR,ASVspoof5,A13,38,0.05131578947368424
+Baseline: MFCC+LR,ASVspoof5,A14,37,0.05702702702702703
+Baseline: MFCC+LR,ASVspoof5,A15,37,0.26513513513513515
+Baseline: MFCC+LR,ASVspoof5,A16,38,0.22175438596491226
+Baseline: MFCC+LR,CodecFake,academicodec_hifi_16k_320d,30,0.37
+Baseline: MFCC+LR,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.19999999999999998
+Baseline: MFCC+LR,CodecFake,descript-audio-codec-16khz,30,0.3416666666666667
+Baseline: MFCC+LR,CodecFake,descript-audio-codec-24khz,30,0.495
+Baseline: MFCC+LR,CodecFake,descript-audio-codec-44khz,30,0.3916666666666667
+Baseline: MFCC+LR,CodecFake,encodec_24khz,30,0.235
+Baseline: MFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.43166666666666664
+Baseline: MFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.7566666666666666
+Baseline: MFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.5483333333333333
+Baseline: MFCC+LR,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.675
+A: LFCC+LR,ASVspoof5,A09,37,0.025180180180180152
+A: LFCC+LR,ASVspoof5,A10,37,0.0636936936936937
+A: LFCC+LR,ASVspoof5,A11,38,0.021491228070175422
+A: LFCC+LR,ASVspoof5,A12,38,0.505
+A: LFCC+LR,ASVspoof5,A13,38,0.07447368421052633
+A: LFCC+LR,ASVspoof5,A14,37,0.0586936936936937
+A: LFCC+LR,ASVspoof5,A15,37,0.08220720720720717
+A: LFCC+LR,ASVspoof5,A16,38,0.12412280701754384
+A: LFCC+LR,CodecFake,academicodec_hifi_16k_320d,30,0.18999999999999997
+A: LFCC+LR,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.22499999999999998
+A: LFCC+LR,CodecFake,descript-audio-codec-16khz,30,0.24166666666666664
+A: LFCC+LR,CodecFake,descript-audio-codec-24khz,30,0.42833333333333334
+A: LFCC+LR,CodecFake,descript-audio-codec-44khz,30,0.355
+A: LFCC+LR,CodecFake,encodec_24khz,30,0.2333333333333333
+A: LFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.42666666666666664
+A: LFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.7383333333333333
+A: LFCC+LR,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.49333333333333335
+A: LFCC+LR,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.6233333333333333
+A: log-spectrogram+LR,ASVspoof5,A09,37,0.04369369369369369
+A: log-spectrogram+LR,ASVspoof5,A10,37,0.021846846846846818
+A: log-spectrogram+LR,ASVspoof5,A11,38,0.1506140350877193
+A: log-spectrogram+LR,ASVspoof5,A12,38,0.4470175438596491
+A: log-spectrogram+LR,ASVspoof5,A13,38,0.05464912280701757
+A: log-spectrogram+LR,ASVspoof5,A14,37,0.06887387387387385
+A: log-spectrogram+LR,ASVspoof5,A15,37,0.1660810810810811
+A: log-spectrogram+LR,ASVspoof5,A16,38,0.15894736842105267
+A: log-spectrogram+LR,CodecFake,academicodec_hifi_16k_320d,30,0.10333333333333333
+A: log-spectrogram+LR,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.1333333333333333
+A: log-spectrogram+LR,CodecFake,descript-audio-codec-16khz,30,0.2716666666666667
+A: log-spectrogram+LR,CodecFake,descript-audio-codec-24khz,30,0.43166666666666664
+A: log-spectrogram+LR,CodecFake,descript-audio-codec-44khz,30,0.30000000000000004
+A: log-spectrogram+LR,CodecFake,encodec_24khz,30,0.14833333333333332
+A: log-spectrogram+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.16499999999999998
+A: log-spectrogram+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.19999999999999998
+A: log-spectrogram+LR,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.18166666666666664
+A: log-spectrogram+LR,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.22499999999999998
+B: wav2vec2-base+LR,ASVspoof5,A09,37,0.01684684684684682
+B: wav2vec2-base+LR,ASVspoof5,A10,37,0.02351351351351349
+B: wav2vec2-base+LR,ASVspoof5,A11,38,0.0033333333333333335
+B: wav2vec2-base+LR,ASVspoof5,A12,38,0.023157894736842093
+B: wav2vec2-base+LR,ASVspoof5,A13,38,0.023157894736842093
+B: wav2vec2-base+LR,ASVspoof5,A14,37,0.0
+B: wav2vec2-base+LR,ASVspoof5,A15,37,0.01
+B: wav2vec2-base+LR,ASVspoof5,A16,38,0.0033333333333333335
+B: wav2vec2-base+LR,CodecFake,academicodec_hifi_16k_320d,30,0.09333333333333332
+B: wav2vec2-base+LR,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.07166666666666666
+B: wav2vec2-base+LR,CodecFake,descript-audio-codec-16khz,30,0.25
+B: wav2vec2-base+LR,CodecFake,descript-audio-codec-24khz,30,0.405
+B: wav2vec2-base+LR,CodecFake,descript-audio-codec-44khz,30,0.28833333333333333
+B: wav2vec2-base+LR,CodecFake,encodec_24khz,30,0.0
+B: wav2vec2-base+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.07333333333333333
+B: wav2vec2-base+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.07166666666666666
+B: wav2vec2-base+LR,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.07166666666666666
+B: wav2vec2-base+LR,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.16666666666666663
+B: wavlm-base-plus+LR,ASVspoof5,A09,37,0.0
+B: wavlm-base-plus+LR,ASVspoof5,A10,37,0.0
+B: wavlm-base-plus+LR,ASVspoof5,A11,38,0.024824561403508756
+B: wavlm-base-plus+LR,ASVspoof5,A12,38,0.024824561403508756
+B: wavlm-base-plus+LR,ASVspoof5,A13,38,0.06464912280701757
+B: wavlm-base-plus+LR,ASVspoof5,A14,37,0.0
+B: wavlm-base-plus+LR,ASVspoof5,A15,37,0.020180180180180154
+B: wavlm-base-plus+LR,ASVspoof5,A16,38,0.0016666666666666668
+B: wavlm-base-plus+LR,CodecFake,academicodec_hifi_16k_320d,30,0.06166666666666666
+B: wavlm-base-plus+LR,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.06166666666666666
+B: wavlm-base-plus+LR,CodecFake,descript-audio-codec-16khz,30,0.235
+B: wavlm-base-plus+LR,CodecFake,descript-audio-codec-24khz,30,0.37
+B: wavlm-base-plus+LR,CodecFake,descript-audio-codec-44khz,30,0.22999999999999998
+B: wavlm-base-plus+LR,CodecFake,encodec_24khz,30,0.03
+B: wavlm-base-plus+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.07166666666666666
+B: wavlm-base-plus+LR,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.07166666666666666
+B: wavlm-base-plus+LR,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.09833333333333333
+B: wavlm-base-plus+LR,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.10166666666666666
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A09,37,0.1610810810810811
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A10,37,0.1560810810810811
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A11,38,0.08447368421052633
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A12,38,0.4520175438596491
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A13,38,0.08114035087719298
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A14,37,0.03351351351351349
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A15,37,0.3204954954954955
+"Check: MFCC, random split (mixes speakers)",ASVspoof5,A16,38,0.20359649122807016
+"Check: MFCC, random split (mixes speakers)",CodecFake,academicodec_hifi_16k_320d,30,0.31333333333333335
+"Check: MFCC, random split (mixes speakers)",CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.21499999999999997
+"Check: MFCC, random split (mixes speakers)",CodecFake,descript-audio-codec-16khz,30,0.4216666666666667
+"Check: MFCC, random split (mixes speakers)",CodecFake,descript-audio-codec-24khz,30,0.5166666666666666
+"Check: MFCC, random split (mixes speakers)",CodecFake,descript-audio-codec-44khz,30,0.33666666666666667
+"Check: MFCC, random split (mixes speakers)",CodecFake,encodec_24khz,30,0.235
+"Check: MFCC, random split (mixes speakers)",CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.335
+"Check: MFCC, random split (mixes speakers)",CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.7966666666666666
+"Check: MFCC, random split (mixes speakers)",CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.5633333333333334
+"Check: MFCC, random split (mixes speakers)",CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.6333333333333333
+Check: source only,ASVspoof5,A09,37,0.46585585585585587
+Check: source only,ASVspoof5,A10,37,0.4704504504504504
+Check: source only,ASVspoof5,A11,38,0.5135087719298246
+Check: source only,ASVspoof5,A12,38,0.5529824561403509
+Check: source only,ASVspoof5,A13,38,0.5266666666666666
+Check: source only,ASVspoof5,A14,37,0.4928828828828829
+Check: source only,ASVspoof5,A15,37,0.546936936936937
+Check: source only,ASVspoof5,A16,38,0.5135087719298246
+Check: source only,CodecFake,academicodec_hifi_16k_320d,30,0.4683333333333333
+Check: source only,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.5983333333333334
+Check: source only,CodecFake,descript-audio-codec-16khz,30,0.4683333333333333
+Check: source only,CodecFake,descript-audio-codec-24khz,30,0.4683333333333333
+Check: source only,CodecFake,descript-audio-codec-44khz,30,0.45166666666666666
+Check: source only,CodecFake,encodec_24khz,30,0.49833333333333335
+Check: source only,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.485
+Check: source only,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.4683333333333333
+Check: source only,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.485
+Check: source only,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.5316666666666667
+Check: silence only,ASVspoof5,A09,37,0.4527027027027027
+Check: silence only,ASVspoof5,A10,37,0.41216216216216217
+Check: silence only,ASVspoof5,A11,38,0.5214912280701756
+Check: silence only,ASVspoof5,A12,38,0.5741228070175439
+Check: silence only,ASVspoof5,A13,38,0.5214912280701756
+Check: silence only,ASVspoof5,A14,37,0.49324324324324326
+Check: silence only,ASVspoof5,A15,37,0.5421171171171171
+Check: silence only,ASVspoof5,A16,38,0.5346491228070176
+Check: silence only,CodecFake,academicodec_hifi_16k_320d,30,0.455
+Check: silence only,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.6
+Check: silence only,CodecFake,descript-audio-codec-16khz,30,0.45333333333333337
+Check: silence only,CodecFake,descript-audio-codec-24khz,30,0.53
+Check: silence only,CodecFake,descript-audio-codec-44khz,30,0.5316666666666667
+Check: silence only,CodecFake,encodec_24khz,30,0.5266666666666666
+Check: silence only,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.49333333333333335
+Check: silence only,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.47333333333333333
+Check: silence only,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.5683333333333334
+Check: silence only,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.4716666666666667
+Ablation: MFCC after silence trim,ASVspoof5,A09,37,0.1644144144144144
+Ablation: MFCC after silence trim,ASVspoof5,A10,37,0.14941441441441441
+Ablation: MFCC after silence trim,ASVspoof5,A11,38,0.03815789473684209
+Ablation: MFCC after silence trim,ASVspoof5,A12,38,0.42552631578947364
+Ablation: MFCC after silence trim,ASVspoof5,A13,38,0.06780701754385966
+Ablation: MFCC after silence trim,ASVspoof5,A14,37,0.02351351351351349
+Ablation: MFCC after silence trim,ASVspoof5,A15,37,0.18126126126126124
+Ablation: MFCC after silence trim,ASVspoof5,A16,38,0.23675438596491227
+Ablation: MFCC after silence trim,CodecFake,academicodec_hifi_16k_320d,30,0.30000000000000004
+Ablation: MFCC after silence trim,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.2383333333333333
+Ablation: MFCC after silence trim,CodecFake,descript-audio-codec-16khz,30,0.335
+Ablation: MFCC after silence trim,CodecFake,descript-audio-codec-24khz,30,0.4966666666666667
+Ablation: MFCC after silence trim,CodecFake,descript-audio-codec-44khz,30,0.36833333333333335
+Ablation: MFCC after silence trim,CodecFake,encodec_24khz,30,0.21333333333333332
+Ablation: MFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.435
+Ablation: MFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.7983333333333333
+Ablation: MFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.4716666666666667
+Ablation: MFCC after silence trim,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.6433333333333333
+Ablation: LFCC after silence trim,ASVspoof5,A09,37,0.025180180180180152
+Ablation: LFCC after silence trim,ASVspoof5,A10,37,0.021846846846846818
+Ablation: LFCC after silence trim,ASVspoof5,A11,38,0.008333333333333333
+Ablation: LFCC after silence trim,ASVspoof5,A12,38,0.495
+Ablation: LFCC after silence trim,ASVspoof5,A13,38,0.029824561403508757
+Ablation: LFCC after silence trim,ASVspoof5,A14,37,0.005
+Ablation: LFCC after silence trim,ASVspoof5,A15,37,0.0536936936936937
+Ablation: LFCC after silence trim,ASVspoof5,A16,38,0.056315789473684236
+Ablation: LFCC after silence trim,CodecFake,academicodec_hifi_16k_320d,30,0.25833333333333336
+Ablation: LFCC after silence trim,CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.21333333333333332
+Ablation: LFCC after silence trim,CodecFake,descript-audio-codec-16khz,30,0.28500000000000003
+Ablation: LFCC after silence trim,CodecFake,descript-audio-codec-24khz,30,0.405
+Ablation: LFCC after silence trim,CodecFake,descript-audio-codec-44khz,30,0.25
+Ablation: LFCC after silence trim,CodecFake,encodec_24khz,30,0.19666666666666666
+Ablation: LFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.3933333333333333
+Ablation: LFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.8783333333333334
+Ablation: LFCC after silence trim,CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.5033333333333334
+Ablation: LFCC after silence trim,CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.64
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A09,37,0.1644144144144144
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A10,37,0.1392342342342342
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A11,38,0.05298245614035091
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A12,38,0.42719298245614035
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A13,38,0.09929824561403508
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A14,37,0.03184684684684682
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A15,37,0.27013513513513515
+"Ablation: MFCC, trained without LibriSpeech",ASVspoof5,A16,38,0.2350877192982456
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,academicodec_hifi_16k_320d,30,0.2966666666666667
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,academicodec_hifi_16k_320d_large_uni,30,0.20166666666666666
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,descript-audio-codec-16khz,30,0.40166666666666667
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,descript-audio-codec-24khz,30,0.5
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,descript-audio-codec-44khz,30,0.3816666666666667
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,encodec_24khz,30,0.1733333333333333
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,funcodec-funcodec_en_libritts-16k-gr1nq32ds320,30,0.37
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,funcodec-funcodec_en_libritts-16k-gr8nq32ds320,30,0.7633333333333333
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,funcodec-funcodec_en_libritts-16k-nq32ds640,30,0.51
+"Ablation: MFCC, trained without LibriSpeech",CodecFake,funcodec-funcodec_zh_en_general_16k_nq32ds640,30,0.6383333333333333

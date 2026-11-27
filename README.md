@@ -50,6 +50,21 @@ python3 run_experiments.py --data data --ssl-models data/models/wav2vec2-base da
 
 All scores are out-of-fold with speaker-disjoint folds, and hyperparameters (regularization strength, SSL layer) are chosen by nested cross-validation.
 
+## Results (first full run, 1,484 clips, speaker-disjoint 5-fold CV)
+
+| Features + logistic regression | EER all [95% CI] | within ASVspoof 5 | within CodecFake | train CodecFake → test ASVspoof 5 | train ASVspoof 5 → test CodecFake |
+| --- | --- | --- | --- | --- | --- |
+| MFCC (baseline) | 29.6% [26.7–32.1] | 19.3% | 43.7% | 45.0% | 48.3% |
+| LFCC | 22.6% [20.3–25.3] | 13.3% | 36.0% | 53.0% | 46.3% |
+| log-spectrogram | 17.1% [14.9–19.2] | 16.8% | 22.5% | 58.8% | 60.3% |
+| wav2vec2-base (frozen) | 8.0% [6.5–9.6] | 1.5% | 17.3% | 15.7% | 30.7% |
+| WavLM-base-plus (frozen) | **7.3% [5.7–8.8]** | 1.7% | **14.3%** | **8.2%** | **24.5%** |
+
+Shortcut checks: silence-only 52.2%, source-only 40.8%, random split 29.7% (vs 29.6% speaker split).
+Full tables are in `results/` (summary, per system, cross-dataset, leave-one-system-out), and
+`stage1_data_analysis.ipynb` is saved with its outputs. The notebook's baseline uses a fixed C=1
+(EER 29.3%); `run_experiments.py` tunes C by nested CV (29.6%).
+
 ## Data decisions
 
 - **Length:** source clips shorter than 3 s are skipped, and longer ones are cut to a random 4 s window. Otherwise long zero-padding would be an easy cue for identifying the corpus.

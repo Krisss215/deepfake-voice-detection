@@ -1,5 +1,6 @@
 data/
-results/
+results/*.txt
+results/cache/
 __pycache__/
 *.pyc
 .DS_Store

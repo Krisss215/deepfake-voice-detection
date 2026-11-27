@@ -1,0 +1,2487 @@
+{
+ "summary": [
+  {
+   "model": "Baseline: MFCC+LR",
+   "EER_all": 0.2959577677224736,
+   "EER_ASVspoof5": 0.19333333333333336,
+   "EER_CodecFake": 0.43666666666666665,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.31166666666666665,
+   "miss_rate": 0.2966666666666667,
+   "false_alarm": 0.29524886877828055,
+   "CI95_all": [
+    0.267492741384527,
+    0.32118409930727804
+   ],
+   "params": [
+    {
+     "C": 0.1
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.1
+    },
+    {
+     "C": 0.01
+    }
+   ]
+  },
+  {
+   "model": "A: LFCC+LR",
+   "EER_all": 0.22588989441930618,
+   "EER_ASVspoof5": 0.13333333333333333,
+   "EER_CodecFake": 0.36,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.25583333333333336,
+   "miss_rate": 0.22666666666666666,
+   "false_alarm": 0.2251131221719457,
+   "CI95_all": [
+    0.2026683865292061,
+    0.25333783405528904
+   ],
+   "params": [
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.1
+    },
+    {
+     "C": 1.0
+    },
+    {
+     "C": 0.001
+    }
+   ]
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "EER_all": 0.17124057315233784,
+   "EER_ASVspoof5": 0.16833333333333333,
+   "EER_CodecFake": 0.22499999999999998,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.18916666666666668,
+   "miss_rate": 0.17166666666666666,
+   "false_alarm": 0.17081447963800905,
+   "CI95_all": [
+    0.14941765096255746,
+    0.19207084086156423
+   ],
+   "params": [
+    {
+     "C": 1.0
+    },
+    {
+     "C": 1.0
+    },
+    {
+     "C": 1.0
+    },
+    {
+     "C": 1.0
+    },
+    {
+     "C": 1.0
+    }
+   ]
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "EER_all": 0.07959276018099545,
+   "EER_ASVspoof5": 0.015000000000000005,
+   "EER_CodecFake": 0.17333333333333334,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.09333333333333335,
+   "miss_rate": 0.08,
+   "false_alarm": 0.07918552036199095,
+   "CI95_all": [
+    0.06508005779581706,
+    0.09568191721530044
+   ],
+   "params": [
+    {
+     "C": 0.01,
+     "layer": 2
+    },
+    {
+     "C": 0.1,
+     "layer": 2
+    },
+    {
+     "C": 0.01,
+     "layer": 3
+    },
+    {
+     "C": 0.01,
+     "layer": 3
+    },
+    {
+     "C": 0.01,
+     "layer": 3
+    }
+   ]
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "EER_all": 0.07343137254901963,
+   "EER_ASVspoof5": 0.01666666666666669,
+   "EER_CodecFake": 0.1433333333333333,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.07999999999999999,
+   "miss_rate": 0.07333333333333333,
+   "false_alarm": 0.07352941176470588,
+   "CI95_all": [
+    0.05710352883037504,
+    0.08846588343555817
+   ],
+   "params": [
+    {
+     "C": 0.1,
+     "layer": 4
+    },
+    {
+     "C": 1.0,
+     "layer": 4
+    },
+    {
+     "C": 0.1,
+     "layer": 3
+    },
+    {
+     "C": 0.01,
+     "layer": 4
+    },
+    {
+     "C": 0.01,
+     "layer": 3
+    }
+   ]
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "EER_all": 0.2965233785822021,
+   "EER_ASVspoof5": 0.19999999999999998,
+   "EER_CodecFake": 0.4366666666666667,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.31666666666666665,
+   "miss_rate": 0.2966666666666667,
+   "false_alarm": 0.29638009049773756,
+   "CI95_all": [
+    0.26669097323377733,
+    0.321767298008241
+   ],
+   "params": [
+    {
+     "C": 0.001
+    },
+    {
+     "C": 1.0
+    },
+    {
+     "C": 0.1
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    }
+   ]
+  },
+  {
+   "model": "Check: source only",
+   "EER_all": 0.4084690799396682,
+   "EER_ASVspoof5": 0.5066666666666666,
+   "EER_CodecFake": 0.495,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.5008333333333334,
+   "miss_rate": 0.4266666666666667,
+   "false_alarm": 0.3902714932126697,
+   "CI95_all": [
+    0.3728860709863812,
+    0.4405040287430679
+   ],
+   "params": [
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.001
+    }
+   ]
+  },
+  {
+   "model": "Check: silence only",
+   "EER_all": 0.5217269984917043,
+   "EER_ASVspoof5": 0.5033333333333334,
+   "EER_CodecFake": 0.51,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.5075,
+   "miss_rate": 0.5366666666666666,
+   "false_alarm": 0.5067873303167421,
+   "CI95_all": [
+    0.4902198364200264,
+    0.5522014351093157
+   ],
+   "params": [
+    {
+     "C": 1.0
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.001
+    }
+   ]
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "EER_all": 0.27830693815987934,
+   "EER_ASVspoof5": 0.17333333333333334,
+   "EER_CodecFake": 0.43000000000000005,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.2975,
+   "miss_rate": 0.2783333333333333,
+   "false_alarm": 0.27828054298642535,
+   "CI95_all": [
+    0.25237988955155843,
+    0.3072699999145366
+   ],
+   "params": [
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    }
+   ]
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "EER_all": 0.2183295625942685,
+   "EER_ASVspoof5": 0.11333333333333331,
+   "EER_CodecFake": 0.3833333333333333,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.245,
+   "miss_rate": 0.21833333333333332,
+   "false_alarm": 0.21832579185520362,
+   "CI95_all": [
+    0.18947154165941493,
+    0.24338549455091182
+   ],
+   "params": [
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    }
+   ]
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "EER_all": 0.3105429864253394,
+   "EER_ASVspoof5": 0.18333333333333335,
+   "EER_CodecFake": 0.42500000000000004,
+   "EER_LibriSpeech": NaN,
+   "EER_excl_real_only": 0.3108333333333333,
+   "miss_rate": 0.31,
+   "false_alarm": 0.31108597285067874,
+   "CI95_all": [
+    0.27668160716998974,
+    0.33808649048864375
+   ],
+   "params": [
+    {
+     "C": 0.1
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.01
+    },
+    {
+     "C": 0.001
+    },
+    {
+     "C": 0.01
+    }
+   ]
+  }
+ ],
+ "per_system": [
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.15941441441441442
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.10572072072072072
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.05131578947368424
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.3857017543859649
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.05131578947368424
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.05702702702702703
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.26513513513513515
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.22175438596491226
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.37
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.19999999999999998
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.3416666666666667
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.495
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.3916666666666667
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.235
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.43166666666666664
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.7566666666666666
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.5483333333333333
+  },
+  {
+   "model": "Baseline: MFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.675
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.025180180180180152
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.0636936936936937
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.021491228070175422
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.505
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.07447368421052633
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.0586936936936937
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.08220720720720717
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.12412280701754384
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.18999999999999997
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.22499999999999998
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.24166666666666664
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.42833333333333334
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.355
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.2333333333333333
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.42666666666666664
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.7383333333333333
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.49333333333333335
+  },
+  {
+   "model": "A: LFCC+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.6233333333333333
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.04369369369369369
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.021846846846846818
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.1506140350877193
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.4470175438596491
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.05464912280701757
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.06887387387387385
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.1660810810810811
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.15894736842105267
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.10333333333333333
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.1333333333333333
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.2716666666666667
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.43166666666666664
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.30000000000000004
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.14833333333333332
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.16499999999999998
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.19999999999999998
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.18166666666666664
+  },
+  {
+   "model": "A: log-spectrogram+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.22499999999999998
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.01684684684684682
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.02351351351351349
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.0033333333333333335
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.023157894736842093
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.023157894736842093
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.0
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.01
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.0033333333333333335
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.09333333333333332
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.07166666666666666
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.25
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.405
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.28833333333333333
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.0
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.07333333333333333
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.07166666666666666
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.07166666666666666
+  },
+  {
+   "model": "B: wav2vec2-base+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.16666666666666663
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.0
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.0
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.024824561403508756
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.024824561403508756
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.06464912280701757
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.0
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.020180180180180154
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.0016666666666666668
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.06166666666666666
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.06166666666666666
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.235
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.37
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.22999999999999998
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.03
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.07166666666666666
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.07166666666666666
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.09833333333333333
+  },
+  {
+   "model": "B: wavlm-base-plus+LR",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.10166666666666666
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.1610810810810811
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.1560810810810811
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.08447368421052633
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.4520175438596491
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.08114035087719298
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.03351351351351349
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.3204954954954955
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.20359649122807016
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.31333333333333335
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.21499999999999997
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.4216666666666667
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.5166666666666666
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.33666666666666667
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.235
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.335
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.7966666666666666
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.5633333333333334
+  },
+  {
+   "model": "Check: MFCC, random split (mixes speakers)",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.6333333333333333
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.46585585585585587
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.4704504504504504
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.5135087719298246
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.5529824561403509
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.5266666666666666
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.4928828828828829
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.546936936936937
+  },
+  {
+   "model": "Check: source only",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.5135087719298246
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.4683333333333333
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.5983333333333334
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.4683333333333333
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.4683333333333333
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.45166666666666666
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.49833333333333335
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.485
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.4683333333333333
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.485
+  },
+  {
+   "model": "Check: source only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.5316666666666667
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.4527027027027027
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.41216216216216217
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.5214912280701756
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.5741228070175439
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.5214912280701756
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.49324324324324326
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.5421171171171171
+  },
+  {
+   "model": "Check: silence only",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.5346491228070176
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.455
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.6
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.45333333333333337
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.53
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.5316666666666667
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.5266666666666666
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.49333333333333335
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.47333333333333333
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.5683333333333334
+  },
+  {
+   "model": "Check: silence only",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.4716666666666667
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.1644144144144144
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.14941441441441441
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.03815789473684209
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.42552631578947364
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.06780701754385966
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.02351351351351349
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.18126126126126124
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.23675438596491227
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.30000000000000004
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.2383333333333333
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.335
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.4966666666666667
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.36833333333333335
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.21333333333333332
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.435
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.7983333333333333
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.4716666666666667
+  },
+  {
+   "model": "Ablation: MFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.6433333333333333
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.025180180180180152
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.021846846846846818
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.008333333333333333
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.495
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.029824561403508757
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.005
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.0536936936936937
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.056315789473684236
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.25833333333333336
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.21333333333333332
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.28500000000000003
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.405
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.25
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.19666666666666666
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.3933333333333333
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.8783333333333334
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.5033333333333334
+  },
+  {
+   "model": "Ablation: LFCC after silence trim",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.64
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER": 0.1644144144144144
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER": 0.1392342342342342
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER": 0.05298245614035091
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER": 0.42719298245614035
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER": 0.09929824561403508
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER": 0.03184684684684682
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER": 0.27013513513513515
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER": 0.2350877192982456
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER": 0.2966666666666667
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER": 0.20166666666666666
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER": 0.40166666666666667
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER": 0.5
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER": 0.3816666666666667
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER": 0.1733333333333333
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.37
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER": 0.7633333333333333
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.51
+  },
+  {
+   "model": "Ablation: MFCC, trained without LibriSpeech",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER": 0.6383333333333333
+  }
+ ],
+ "cross_dataset": [
+  {
+   "features": "mfcc",
+   "train": "ASVspoof5",
+   "test": "CodecFake",
+   "EER_cross": 0.4833333333333333,
+   "EER_within_test_source": 0.43666666666666665,
+   "params": {
+    "C": 0.01
+   }
+  },
+  {
+   "features": "mfcc",
+   "train": "CodecFake",
+   "test": "ASVspoof5",
+   "EER_cross": 0.44999999999999996,
+   "EER_within_test_source": 0.19333333333333336,
+   "params": {
+    "C": 0.1
+   }
+  },
+  {
+   "features": "lfcc",
+   "train": "ASVspoof5",
+   "test": "CodecFake",
+   "EER_cross": 0.4633333333333334,
+   "EER_within_test_source": 0.36,
+   "params": {
+    "C": 0.01
+   }
+  },
+  {
+   "features": "lfcc",
+   "train": "CodecFake",
+   "test": "ASVspoof5",
+   "EER_cross": 0.53,
+   "EER_within_test_source": 0.13333333333333333,
+   "params": {
+    "C": 0.1
+   }
+  },
+  {
+   "features": "logspec",
+   "train": "ASVspoof5",
+   "test": "CodecFake",
+   "EER_cross": 0.6033333333333333,
+   "EER_within_test_source": 0.22499999999999998,
+   "params": {
+    "C": 0.1
+   }
+  },
+  {
+   "features": "logspec",
+   "train": "CodecFake",
+   "test": "ASVspoof5",
+   "EER_cross": 0.5883333333333334,
+   "EER_within_test_source": 0.16833333333333333,
+   "params": {
+    "C": 1.0
+   }
+  },
+  {
+   "features": "wav2vec2-base",
+   "train": "ASVspoof5",
+   "test": "CodecFake",
+   "EER_cross": 0.30666666666666664,
+   "EER_within_test_source": 0.17333333333333334,
+   "params": {
+    "C": 0.01,
+    "layer": 5
+   }
+  },
+  {
+   "features": "wav2vec2-base",
+   "train": "CodecFake",
+   "test": "ASVspoof5",
+   "EER_cross": 0.15666666666666665,
+   "EER_within_test_source": 0.015000000000000005,
+   "params": {
+    "C": 0.01,
+    "layer": 3
+   }
+  },
+  {
+   "features": "wavlm-base-plus",
+   "train": "ASVspoof5",
+   "test": "CodecFake",
+   "EER_cross": 0.24500000000000002,
+   "EER_within_test_source": 0.1433333333333333,
+   "params": {
+    "C": 0.01,
+    "layer": 3
+   }
+  },
+  {
+   "features": "wavlm-base-plus",
+   "train": "CodecFake",
+   "test": "ASVspoof5",
+   "EER_cross": 0.08166666666666669,
+   "EER_within_test_source": 0.01666666666666669,
+   "params": {
+    "C": 0.01,
+    "layer": 3
+   }
+  }
+ ],
+ "loso": [
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER_unseen": 0.2131081081081081
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER_unseen": 0.18626126126126125
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER_unseen": 0.076140350877193
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER_unseen": 0.5794736842105264
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER_unseen": 0.1307894736842105
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER_unseen": 0.05702702702702703
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER_unseen": 0.2684684684684685
+  },
+  {
+   "features": "mfcc",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER_unseen": 0.26991228070175444
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER_unseen": 0.34
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER_unseen": 0.1733333333333333
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.3916666666666667
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.495
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.44666666666666666
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.275
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.475
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.77
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.5666666666666667
+  },
+  {
+   "features": "mfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.6616666666666666
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER_unseen": 0.05202702702702703
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER_unseen": 0.05202702702702703
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER_unseen": 0.005
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER_unseen": 0.5794736842105264
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER_unseen": 0.08447368421052633
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER_unseen": 0.026846846846846822
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER_unseen": 0.05702702702702703
+  },
+  {
+   "features": "lfcc",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER_unseen": 0.12912280701754386
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER_unseen": 0.17166666666666663
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER_unseen": 0.24333333333333332
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.30833333333333335
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.37
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.365
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.22999999999999998
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.43833333333333335
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.8983333333333333
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.5666666666666667
+  },
+  {
+   "features": "lfcc",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.7616666666666667
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER_unseen": 0.07887387387387385
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER_unseen": 0.03184684684684682
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER_unseen": 0.25991228070175443
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER_unseen": 0.46850877192982454
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER_unseen": 0.44219298245614036
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER_unseen": 0.3791891891891892
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER_unseen": 0.3186486486486486
+  },
+  {
+   "features": "logspec",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER_unseen": 0.42052631578947364
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER_unseen": 0.19666666666666666
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER_unseen": 0.33666666666666667
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.565
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.5333333333333333
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.53
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.3983333333333333
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.47333333333333333
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.5966666666666667
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.505
+  },
+  {
+   "features": "logspec",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.5533333333333333
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER_unseen": 0.030180180180180153
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER_unseen": 0.006666666666666667
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER_unseen": 0.005
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER_unseen": 0.047982456140350904
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER_unseen": 0.07947368421052634
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER_unseen": 0.025180180180180152
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER_unseen": 0.09999999999999999
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER_unseen": 0.09833333333333333
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.265
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.3833333333333333
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.29000000000000004
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.16666666666666663
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.09833333333333333
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.10333333333333333
+  },
+  {
+   "features": "wav2vec2-base",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.23166666666666663
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A09",
+   "n_spoof": 37,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A10",
+   "n_spoof": 37,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A11",
+   "n_spoof": 38,
+   "EER_unseen": 0.0016666666666666668
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A12",
+   "n_spoof": 38,
+   "EER_unseen": 0.01982456140350876
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A13",
+   "n_spoof": 38,
+   "EER_unseen": 0.08114035087719298
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A14",
+   "n_spoof": 37,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A15",
+   "n_spoof": 37,
+   "EER_unseen": 0.02351351351351349
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "ASVspoof5",
+   "system": "A16",
+   "n_spoof": 38,
+   "EER_unseen": 0.0
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d",
+   "n_spoof": 30,
+   "EER_unseen": 0.06666666666666665
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "academicodec_hifi_16k_320d_large_uni",
+   "n_spoof": 30,
+   "EER_unseen": 0.07166666666666666
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-16khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.29833333333333334
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.39
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "descript-audio-codec-44khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.22333333333333333
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "encodec_24khz",
+   "n_spoof": 30,
+   "EER_unseen": 0.005
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr1nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.06333333333333332
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-gr8nq32ds320",
+   "n_spoof": 30,
+   "EER_unseen": 0.09499999999999999
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_en_libritts-16k-nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.10999999999999999
+  },
+  {
+   "features": "wavlm-base-plus",
+   "source": "CodecFake",
+   "system": "funcodec-funcodec_zh_en_general_16k_nq32ds640",
+   "n_spoof": 30,
+   "EER_unseen": 0.15833333333333333
+  }
+ ],
+ "notes": {
+  "source_classifier_accuracy_mfcc": 0.8504043126684636,
+  "source_majority_rate": 0.40431266846361186
+ },
+ "n": 1484,
+ "speakers": 500
+}
